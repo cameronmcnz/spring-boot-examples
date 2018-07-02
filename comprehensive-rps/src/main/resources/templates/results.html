@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<a href="playagame?choice=rock">rock</a>
+<a href="playagame?choice=paper">paper</a>
+<a href="playagame?choice=scissors">scissors</a>
+
+
+
+    <p th:text="'Wins: ' + ${score.wins} + '!'" />
+    <p th:text="'Ties, ' + ${score.ties} + '!'" />
+    <p th:text="'Losses, ' + ${score.losses} + '!'" />
+
+</body>
+</html>
