@@ -1,23 +1,36 @@
-package com.mcnz.rps.smvc;
+package com.mcnz.rps.spring;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 public class WebController {
 	
-	@GetMapping("/playagame")
-	public String playRoshambo(@RequestParam(name = "choice", required=false) String choice, Model model) {
+	@GetMapping ("/playagame")
+	public String playGame(
+			@RequestParam(name="choice", required=false) 
+			    String theChoice, 
+			       Model model) {
 		
-		if (choice == null) {
+		if (theChoice == null) {
 			return "index";
 		}
-
+		
+		String theOutcome = "error";
+		if (theChoice.equals("rock")) {
+			theOutcome = "tie";
+		}
+		if (theChoice.equals("paper")) {
+			theOutcome = "win";
+		}
+		if (theChoice.equals("scissors")) {
+			theOutcome = "loss";
+		}
+		
+		model.addAttribute("outcome", theOutcome);
 		return "results";
+		
 	}
-	
-
 }
