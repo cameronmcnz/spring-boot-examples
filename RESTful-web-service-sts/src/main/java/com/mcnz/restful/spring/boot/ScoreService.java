@@ -8,53 +8,53 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ScoreService {
 	
-	private int wins, losses, ties;
+
 	
 	//{ "wins":"5", "losses":"3", "ties": "0"}
 	@RequestMapping(value="/score", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public String getScore() {
 		String pattern = "{ \"wins\":\"%s\", \"losses\":\"%s\", \"ties\": \"%s\"}";
-		return String.format(pattern,  wins, losses, ties);
+		return String.format(pattern,  Score.WINS, Score.LOSSES, Score.TIES );
 	
 	}
 	
 	@RequestMapping(value="/score", method=RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE)
 	public String update(int wins, int losses, int ties) {
-		this.wins   = wins;
-		this.ties = ties;
-		this.losses = losses;
+		Score.WINS   = wins;
+		Score.TIES   = ties;
+		Score.LOSSES = losses;
 		String pattern = "{ \"wins\":\"%s\", \"losses\":\"%s\", \"ties\": \"%s\"}";
-		return String.format(pattern,  wins, losses, ties);	
+		return String.format(pattern,  Score.WINS, Score.LOSSES, Score.TIES );	
 	}
 	
 
 	@RequestMapping(value="/score/wins", method=RequestMethod.POST)
 	public int increaseWins() {
-		wins++;
-		return wins;
+		Score.WINS++;
+		return Score.WINS;
 	}
 	@RequestMapping(value="/score/losses", method=RequestMethod.POST)
 	public int increaseLosses() {
-		losses++;
-		return losses;
+		Score.LOSSES++;
+		return Score.LOSSES;
 	}
 	@RequestMapping(value="/score/ties", method=RequestMethod.POST)
 	public int increaseTies() {
-		ties++;
-		return ties;
+		Score.TIES ++;
+		return Score.TIES ;
 	}
 
 	@RequestMapping(value="/score/wins", method=RequestMethod.GET)
 	public int getWins() {
-		return wins;
+		return Score.WINS;
 	}
 	@RequestMapping(value="/score/losses", method=RequestMethod.GET)
 	public int getLosses() {
-		return losses;
+		return Score.LOSSES;
 	}
 	@RequestMapping(value="/score/ties", method=RequestMethod.GET)
 	public int getTies() {
-		return ties;
+		return Score.TIES ;
 	}
 
 }
