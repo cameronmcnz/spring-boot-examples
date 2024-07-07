@@ -1,0 +1,43 @@
+-- ----------------------------------------------
+-- DDL Statements for tables
+-- ----------------------------------------------
+
+CREATE TABLE SCORE ( 
+   id INTEGER auto_increment NOT NULL, 
+   wins INTEGER NOT NULL, 
+   losses INTEGER NOT NULL, 
+   ties INTEGER NOT NULL,
+   PRIMARY KEY (id)
+);
+
+
+CREATE TABLE GAMESUMMARY ( 
+   id INTEGER auto_increment NOT NULL, 
+   CLIENT VARCHAR(255) NOT NULL, 
+   SERVER VARCHAR(255) NOT NULL, 
+   RESULT VARCHAR(255) NOT NULL,
+   PRIMARY KEY (id)
+);
+-- ----------------------------------------------
+-- DDL Statements for keys
+-- ----------------------------------------------
+
+CREATE TABLE `roshambo`.`gamesummary` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `client` INT NOT NULL,
+  `server` INT NOT NULL,
+  `result` INT NOT NULL,
+  PRIMARY KEY (`id`)
+ );
+ 
+ CREATE TABLE roshambo.gamesummary ( 
+   id INTEGER auto_increment NOT NULL, 
+   client VARCHAR(255) NOT NULL, 
+   server VARCHAR(255) NOT NULL, 
+   result VARCHAR(255) NOT NULL,
+   PRIMARY KEY (id)
+);
+
+
+insert into roshambo.gamesummary (client, server, result)
+values("rock", "paper", "win");
