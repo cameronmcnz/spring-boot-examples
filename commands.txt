@@ -21,6 +21,7 @@ private Integer id;
 
 @NotBlank
 @PositiveOrZero
+@Size(min = 0, max = 20)
 int wins, losses, ties;
 
 
