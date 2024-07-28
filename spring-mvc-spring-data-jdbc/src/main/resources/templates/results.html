@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	
+	<br>
+	Apparently you chose: <span th:text="${yourChoice}"/><br/>
+	
+	The result of playing the game was: <span th:text="${theOutcome}"/> <br/>
+	
+	Wins:  <span th:text="${score.wins}"/> | 
+	Losses <span th:text="${score.losses}"/> | 
+	Ties:  <span th:text="${score.ties}"/><br/>
+	
+</body>
+
+</html>
