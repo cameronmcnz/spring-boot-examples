@@ -1,0 +1,41 @@
+
+
+
+
+@Operation(summary = "Non-idempotent update the score by a single unit.")
+
+@Parameter(description = "New value for the number of wins.") 
+
+@ApiResponse(responseCode = "200", description = "Wins updated, score returned.", 
+		    content = { @Content(mediaType = "application/json", 
+		      schema = @Schema(implementation = Score.class)) })
+			  
+			  
+@OpenAPIDefinition(info = @Info(title = "Score API - Definition", version = "1.2", description = "Operations to Help Settle Scores"))
+			  
+
+			  
+@Id
+@NotNull(message = "Id cannot be null")
+private Integer id;
+
+@NotBlank
+@PositiveOrZero
+int wins, losses, ties;
+
+
+@GetMapping("/search")
+public Page<Score> searchForScores(@ParameterObject Pageable pageable) {
+	 return null;
+}
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    public ResponseEntity<String> handleTeapotError(RuntimeException exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.I_AM_A_TEAPOT);
+    }
+    
+}
