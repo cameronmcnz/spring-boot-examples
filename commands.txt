@@ -1,5 +1,28 @@
 package com.example.demo;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ScoreRepository extends CrudRepository<Score, Long> {
+
+
+}
+@Component
+public class Score {
+	
+
+	@Id
+	Long id;
+	int wins, losses, ties;
+	
+	public Score() {
+		super();
+	}
+
+
+package com.example.demo;
+
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
