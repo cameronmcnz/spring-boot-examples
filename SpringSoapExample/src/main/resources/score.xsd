@@ -1,0 +1,28 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soap.jee.mcnz.com/"
+           targetNamespace="http://soap.jee.mcnz.com/" elementFormDefault="qualified">
+
+    <xs:element name="getScoreRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element> 
+
+    <xs:element name="getScoreResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="score" type="tns:score"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="score">
+        <xs:sequence>
+            <xs:element name="user" type="xs:string"/>
+            <xs:element name="wins" type="xs:int"/>
+            <xs:element name="losses" type="xs:int"/>
+            <xs:element name="ties" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
